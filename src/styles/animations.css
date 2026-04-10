@@ -1,0 +1,232 @@
+/* ===== 공통 ===== */
+.cat-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.cat-wrapper {
+  display: inline-block;
+  will-change: transform;
+  transform-origin: center bottom;
+}
+
+.cat-image {
+  width: 180px;
+  height: auto;
+  user-select: none;
+}
+
+/* ===== 그림자 ===== */
+.shadow {
+  width: 100px;
+  height: 16px;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 50%;
+  filter: blur(4px);
+  transition: transform 0.1s ease;
+}
+
+.shadow-animated {
+  animation: shadow-pulse 0.6s ease-in-out infinite alternate;
+}
+
+@keyframes shadow-pulse {
+  from { transform: scaleX(1);   opacity: 0.3; }
+  to   { transform: scaleX(0.7); opacity: 0.15; }
+}
+
+/* ===== 바운스 댄스 ===== */
+@keyframes bounce-dance {
+  0%   { transform: translateY(0)    rotate(0deg)   scaleX(1); }
+  15%  { transform: translateY(-30px) rotate(-8deg)  scaleX(0.95); }
+  30%  { transform: translateY(0)    rotate(0deg)   scaleX(1.05); }
+  45%  { transform: translateY(-20px) rotate(8deg)   scaleX(0.95); }
+  60%  { transform: translateY(0)    rotate(0deg)   scaleX(1.05); }
+  75%  { transform: translateY(-12px) rotate(-5deg)  scaleX(0.97); }
+  100% { transform: translateY(0)    rotate(0deg)   scaleX(1); }
+}
+
+.dance-bounce {
+  animation: bounce-dance 0.6s ease-in-out infinite;
+}
+
+/* ===== 스핀 댄스 ===== */
+@keyframes spin-dance {
+  0%   { transform: rotate(0deg)   scale(1); }
+  25%  { transform: rotate(90deg)  scale(1.1); }
+  50%  { transform: rotate(180deg) scale(1); }
+  75%  { transform: rotate(270deg) scale(1.1); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+.dance-spin {
+  animation: spin-dance 1s linear infinite;
+}
+
+/* ===== 웨이브 댄스 ===== */
+@keyframes wave-dance {
+  0%   { transform: translateX(0)    translateY(0)    rotate(0deg); }
+  20%  { transform: translateX(-25px) translateY(-10px) rotate(-10deg); }
+  40%  { transform: translateX(0)    translateY(-18px) rotate(0deg); }
+  60%  { transform: translateX(25px)  translateY(-10px) rotate(10deg); }
+  80%  { transform: translateX(0)    translateY(-5px)  rotate(0deg); }
+  100% { transform: translateX(0)    translateY(0)    rotate(0deg); }
+}
+
+.dance-wave {
+  animation: wave-dance 0.8s ease-in-out infinite;
+}
+
+/* ===== 디스코 댄스 ===== */
+@keyframes disco-dance {
+  0%   { transform: translateY(0)    rotate(0deg)    scale(1)    skewX(0deg); }
+  10%  { transform: translateY(-25px) rotate(-15deg)  scale(1.1)  skewX(-5deg); }
+  20%  { transform: translateY(-5px)  rotate(5deg)   scale(0.95) skewX(3deg); }
+  30%  { transform: translateY(-30px) rotate(15deg)   scale(1.15) skewX(5deg); }
+  40%  { transform: translateY(0)    rotate(-5deg)   scale(1)    skewX(-3deg); }
+  50%  { transform: translateY(-20px) rotate(-20deg)  scale(1.1)  skewX(-5deg); }
+  60%  { transform: translateY(-8px)  rotate(10deg)   scale(0.95) skewX(3deg); }
+  70%  { transform: translateY(-28px) rotate(20deg)   scale(1.1)  skewX(5deg); }
+  80%  { transform: translateY(-5px)  rotate(-8deg)   scale(1.05) skewX(-2deg); }
+  90%  { transform: translateY(-15px) rotate(5deg)   scale(1)    skewX(2deg); }
+  100% { transform: translateY(0)    rotate(0deg)    scale(1)    skewX(0deg); }
+}
+
+.dance-disco {
+  animation: disco-dance 0.5s ease-in-out infinite;
+}
+
+/* ===== 레이아웃 ===== */
+.layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 40px 20px;
+  gap: 32px;
+  color: white;
+}
+
+.header {
+  text-align: center;
+}
+
+.title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, #FF8C42, #FF6B9D, #C44AFF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -1px;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.65);
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  flex: 1;
+}
+
+.footer {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.35);
+}
+
+/* ===== 컨트롤 ===== */
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.toggle-btn {
+  padding: 14px 40px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  letter-spacing: 0.5px;
+}
+
+.toggle-btn.playing {
+  background: linear-gradient(135deg, #FF6B9D, #C44AFF);
+  color: white;
+  box-shadow: 0 6px 24px rgba(196, 74, 255, 0.45);
+}
+
+.toggle-btn.paused {
+  background: linear-gradient(135deg, #FF8C42, #FF6B9D);
+  color: white;
+  box-shadow: 0 6px 24px rgba(255, 107, 157, 0.45);
+}
+
+.toggle-btn:hover {
+  transform: translateY(-2px) scale(1.04);
+}
+
+.toggle-btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.dance-styles {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.style-btn {
+  padding: 9px 18px;
+  font-size: 0.9rem;
+  border: 2px solid rgba(255,255,255,0.25);
+  border-radius: 30px;
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.8);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(4px);
+}
+
+.style-btn:hover {
+  border-color: rgba(255,255,255,0.5);
+  background: rgba(255,255,255,0.15);
+  color: white;
+}
+
+.style-btn.active {
+  border-color: #FF8C42;
+  background: rgba(255, 140, 66, 0.2);
+  color: #FF8C42;
+  font-weight: 700;
+}
+
+/* ===== 반응형 ===== */
+@media (max-width: 480px) {
+  .title { font-size: 2rem; }
+  .cat-image { width: 140px; }
+  .toggle-btn { padding: 12px 32px; font-size: 1rem; }
+  .style-btn { padding: 7px 14px; font-size: 0.82rem; }
+  .layout { padding: 28px 16px; gap: 24px; }
+}
+
+@media (min-width: 768px) {
+  .cat-image { width: 220px; }
+  .title { font-size: 3.4rem; }
+}
+
+@media (min-width: 1024px) {
+  .cat-image { width: 260px; }
+}
